@@ -7,11 +7,10 @@ public class Main {
         ArrayList<Coches> cochesArrayList = new ArrayList<>();
         Coches coches;
         InsertarCoches insertarCoches = new InsertarCoches();
+        LeerCoches leerCoches = new LeerCoches();
         Scanner scanner = new Scanner(System.in);
 
         int aux = 0;
-
-        cargarArray(cochesArrayList);
 
         System.out.println("Concesionario Trassierra\n " +
                 "1- Insertar Coches\n" +
@@ -19,7 +18,7 @@ public class Main {
                 "3- Eliminar coches matriculados < 2000\n" +
                 "4- Salir");
         aux = scanner.nextInt();
-        while(aux == 4){
+        while(aux != 4){
             switch (aux){
                 case 1:
                     String matricula, modelo, marca;
@@ -46,8 +45,10 @@ public class Main {
                     while (aux != 3){
                         switch (aux){
                             case 1:
+                                leerCoches.leerCochesMayores2000();
                                 break;
                             case 2:
+                                leerCoches.leerCochesMenores2000();
                                 break;
                             default:
                                 System.out.println("Rango invalido");
@@ -91,6 +92,12 @@ public class Main {
                 break;
             } catch (IOException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
+            }finally {
+                try {
+                    objectInputStream.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
 

@@ -42,4 +42,14 @@ public class Coches implements Serializable {
     public void setAgeMatricula(int ageMatricula) {
         this.ageMatricula = ageMatricula;
     }
+
+    @Override
+    public String toString() {
+        return "Coches{" +
+                "matricula='" + matricula + '\'' +
+                ", marca='" + marca + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", ageMatricula=" + ageMatricula +
+                '}';
+    }
 }
