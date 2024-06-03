@@ -26,6 +26,7 @@ public class Main {
 
                     System.out.println("Dime la matricula del coche");
                     matricula = scanner.nextLine();
+                    scanner.nextLine();
                     System.out.println("Dime el modelo del coche");
                     modelo = scanner.nextLine();
                     System.out.println("Dime la marca del coche");
@@ -36,6 +37,8 @@ public class Main {
                     coches = new Coches(matricula, modelo, marca, ageMatricula);
 
                     insertarCoches.insertarCocheEnFile(coches);
+
+                    System.out.println(coches.toString());
                     break;
                 case 2:
                     System.out.println("1) < 2000");
@@ -43,16 +46,10 @@ public class Main {
                     System.out.println("3) Salir");
                     aux = scanner.nextInt();
                     while (aux != 3){
-                        switch (aux){
-                            case 1:
-                                leerCoches.leerCochesMayores2000();
-                                break;
-                            case 2:
-                                leerCoches.leerCochesMenores2000();
-                                break;
-                            default:
-                                System.out.println("Rango invalido");
-                                break;
+                        switch (aux) {
+                            case 1 -> leerCoches.leerCochesMayores2000();
+                            case 2 -> leerCoches.leerCochesMenores2000();
+                            default -> System.out.println("Rango invalido");
                         }
 
                         System.out.println("1) < 2000");
@@ -78,28 +75,31 @@ public class Main {
     }
 
 
-    public static void cargarArray(ArrayList<Coches> cochesArrayList){
+    public static void cargarArray(ArrayList<Coches> cochesArrayList) {
         ObjectInputStream objectInputStream = null;
 
-        while(true){
-            try{
-                objectInputStream = new ObjectInputStream(new FileInputStream("coches.dat"));
+        try {
+            objectInputStream = new ObjectInputStream(new FileInputStream("coches.dat"));
 
-                Coches coche = (Coches) objectInputStream.readObject();
-                cochesArrayList.add(coche);
 
-            }catch (EOFException e){
-                break;
-            } catch (IOException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }finally {
-                try {
-                    objectInputStream.close();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+            Coches coche = (Coches) objectInputStream.readObject();
+            while (coche != null){
+                if (!cochesArrayList.contains(coche)){
+                    cochesArrayList.add(coche);
                 }
+                coche = (Coches) objectInputStream.readObject();
+            }
+
+        } catch (EOFException ex){
+            System.out.println("e");
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                objectInputStream.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
             }
         }
-
     }
 }

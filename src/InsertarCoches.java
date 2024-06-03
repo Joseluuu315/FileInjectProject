@@ -11,7 +11,7 @@ public class InsertarCoches {
      */
     public void insertarCocheEnFile(Coches coches){
         try {
-            objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName));
+            objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName, true));
             objectOutputStream.writeObject(coches);
 
         } catch (IOException e) {

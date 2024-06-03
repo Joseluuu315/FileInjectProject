@@ -1,8 +1,6 @@
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 public class LeerCoches {
-    ObjectInputStream objectInputStream = null;
     ArrayList<Coches> cochesArrayList = new ArrayList<>();
     ArrayList<Coches> cochesLecturaArray = new ArrayList<>();
     Coches coches;
