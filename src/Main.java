@@ -77,6 +77,7 @@ public class Main {
 
     public static void cargarArray(ArrayList<Coches> cochesArrayList) {
         ObjectInputStream objectInputStream = null;
+        cochesArrayList.clear(); //reinicio de array por devolucion duplicada
 
         try {
             objectInputStream = new ObjectInputStream(new FileInputStream("coches.dat"));
