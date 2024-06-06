@@ -102,6 +102,7 @@ public class Main {
                 coche = (Coches) objectInputStream.readObject();
             }
 
+
         }  catch (IOException | ClassNotFoundException e) {
             System.out.println("Error al cargar el array: " + e.getMessage());
             e.printStackTrace();
