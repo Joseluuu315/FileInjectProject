@@ -91,15 +91,16 @@ public class Main {
                 coche = (Coches) objectInputStream.readObject();
             }
 
-        } catch (EOFException ex){
-            System.out.println("e");
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println(e.getMessage());
+        }  catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error al cargar el array: " + e.getMessage());
+            e.printStackTrace();
         } finally {
-            try {
-                objectInputStream.close();
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
+            if (objectInputStream != null) {
+                try {
+                    objectInputStream.close();
+                } catch (IOException e) {
+                    System.out.println("No se puede cerrar el ObjectInputStream");
+                }
             }
         }
     }

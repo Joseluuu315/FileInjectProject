@@ -15,7 +15,9 @@ public class LeerCoches {
                 cochesLecturaArray.add(coche);
             }
         }
+
         System.out.println("Mayores de 2000");
+
         for (Coches coche1 : cochesLecturaArray){
             System.out.println(coche1.toString());
         }

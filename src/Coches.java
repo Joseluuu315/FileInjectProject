@@ -4,7 +4,7 @@ public class Coches implements Serializable {
     private String matricula, marca, modelo;
     private int ageMatricula;
 
-    public Coches(String matricula, String marca, String modelo, int ageMatricula) {
+    public Coches(String matricula, String modelo, String marca, int ageMatricula) {
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
