@@ -42,4 +42,21 @@ public class LeerCoches {
         }
 
     }
+
+    public ArrayList<Coches> returnMayores2000(){
+        cochesLecturaArray = new ArrayList<>();
+        Main.cargarArray(cochesArrayList);
+
+
+        for (Coches coche: cochesArrayList
+        ) {
+            if (coche.getAgeMatricula() > 2000){
+                cochesLecturaArray.add(coche);
+            }
+        }
+
+        System.out.println("Menores de 2000");
+
+        return cochesLecturaArray;
+    }
 }

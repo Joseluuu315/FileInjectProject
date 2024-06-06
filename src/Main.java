@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         ArrayList<Coches> cochesArrayList = new ArrayList<>();
+        ArrayList<Coches> cochesMayores2000 = new ArrayList<>();
         Coches coches;
         InsertarCoches insertarCoches = new InsertarCoches();
         LeerCoches leerCoches = new LeerCoches();
@@ -59,6 +60,16 @@ public class Main {
                     }
                     break;
                 case 3:
+                    cochesMayores2000 = leerCoches.returnMayores2000();
+
+                    File file = new File("coches.dat");
+                    file.delete();
+
+                    for (Coches coches2 : cochesMayores2000){
+                        insertarCoches.insertarCocheEnFile(coches2);
+                        System.out.println(coches2.getAgeMatricula());
+                    }
+
                     break;
                 default:
                     System.out.println("Rango numerico invalido");
