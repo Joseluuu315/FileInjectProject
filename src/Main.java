@@ -92,14 +92,12 @@ public class Main {
 
         try {
             objectInputStream = new ObjectInputStream(new FileInputStream("coches.dat"));
+            Coches coche;
 
-
-            Coches coche = (Coches) objectInputStream.readObject();
-            while (coche != null){
+            while ((coche=(Coches) objectInputStream.readObject()) != null){
                 if (!cochesArrayList.contains(coche)){
                     cochesArrayList.add(coche);
                 }
-                coche = (Coches) objectInputStream.readObject();
             }
 
 
